@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>人格档案 · 16 型人格测试报告</title>
+<meta name="description" content="基于 Open Extended Jungian Type Scales 1.2 公开发表量表的 32 题人格测试，生成含维度分数、历史名人对照与成长建议的完整报告。">
+<meta property="og:title" content="人格档案 · 16 型人格测试报告">
+<meta property="og:description" content="32 道题，四种维度，一份关于你自己的档案。">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230b0b0d'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23c9a15e' stroke-width='1.4'/%3E%3C/svg%3E">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#/">
+      <span class="brand-mark">序</span>
+      <span class="brand-tx">人格档案<small>PERSONALITY ARCHIVE</small></span>
+    </a>
+    <div class="nav-links">
+      <a href="#/test">开始测试</a>
+      <a href="#/types">十六型</a>
+      <a href="#/about">量表说明</a>
+    </div>
+  </div>
+</nav>
+
+<main id="view"></main>
+
+<footer class="foot">
+  <div class="wrap foot-grid">
+    <div>
+      <h6>关于这份档案</h6>
+      <p>本测试使用 <strong>Open Extended Jungian Type Scales 1.2</strong>（OEJTS）第一部分的 32 道词对题，该量表由 Eric Jorgenson 于 2014 年公开发表，作为 MBTI 的开源替代量表，在 Open-Source Psychometrics Project 的对照研究中表现最优。</p>
+    </div>
+    <div>
+      <h6>重要提示</h6>
+      <p>MBTI 与 OEJTS 均非临床诊断工具，结果仅供自我探索与娱乐参考。人格是连续谱，不是四个格子。请把结果当作一面镜子，而不是一张判决书。</p>
+    </div>
+    <div>
+      <h6>图像来源</h6>
+      <p>历史人物肖像取自 Wikimedia Commons 的公有领域或自由许可文件，统一处理后用于人物对照。人物与类型的对应为基于公开传记的推断，非实证结论。</p>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script src="data/questions.js"></script>
+<script src="data/types.js"></script>
+<script src="data/people.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
