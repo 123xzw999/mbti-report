@@ -50,6 +50,20 @@ python -m http.server 8787
 | 人物肖像 | [Wikimedia Commons](https://commons.wikimedia.org/) | 公有领域 / 自由许可 |
 | 类型描述 | 基于 MBTI 与 OEJTS 文献综述整理 | 本项目原创撰写 |
 
+## 参考的开源项目
+
+做之前对比过几个现成实现，最后只借了思路、没有直接复制代码：
+
+| 项目 | 参考点 | 为什么没直接用 |
+|---|---|---|
+| [openpsychometrics/OEJTS](https://openpsychometrics.org/tests/OEJTS/) | **题库与计分方式**，本项目的实际数据源 | 它没有报告页，只有分数 |
+| [MskTmi/MBTI](https://github.com/MskTmi/MBTI) ⭐206 | 中文 93 题版的页面结构与题库组织方式 | 题库来源不明，题目版权无法追溯 |
+| [JohnDev19/Personality-Test-App](https://github.com/JohnDev19/Personality-Test-App) | React 版的答题交互节奏 | 需要构建工具，不符合「零依赖双击可跑」 |
+| [luhuadong/mbti-test](https://github.com/luhuadong/mbti-test) | Python 包的计分函数写法 | 是命令行工具，没有前端 |
+| [16personalities](https://www.16personalities.com/) | 报告的信息层次与类型命名参考 | 用的是 NERIS 模型，题目与文案受版权保护 |
+
+**关于 16personalities 的题**：它的 60 题属于受版权保护的商业量表，不能直接抓取分发。所以这里改用 OEJTS——同样是荣格四维度、同样是 5 点量表，但是公开发表、可复现、可引用的学术版本。
+
 ## 重新抓取肖像
 
 ```bash
