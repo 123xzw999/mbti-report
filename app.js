@@ -461,14 +461,42 @@
   /* ---------- 滚动显现 ---------- */
   var io = null;
   function observe() {
-    if (!('IntersectionObserver' in window)) return;
+    var cards = view.querySelectorAll('.grid16');
+
+    /* 不支持 IO 时直接全部显示，不能留白 */
+    if (!('IntersectionObserver' in window)) {
+      view.querySelectorAll('.tcard').forEach(function (el) { el.classList.add('anim', 'in'); });
+      return;
+    }
     if (io) io.disconnect();
     io = new IntersectionObserver(function (es) {
-      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, { threshold: 0.08 });
-    view.querySelectorAll('.block, .tcard, .person').forEach(function (el) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var el = e.target;
+        el.classList.add('in');
+        io.unobserve(el);
+        /* 动画播完摘掉 anim，让 hover 的 transform 正常接管 */
+        if (el.classList.contains('anim')) {
+          var delay = 1080 + (parseInt(el.style.getPropertyValue('--i') || '0', 10) * 100);
+          setTimeout(function () { el.classList.remove('anim', 'in'); }, delay);
+        }
+      });
+    }, { threshold: 0.06, rootMargin: '0px 0px -6% 0px' });
+
+    view.querySelectorAll('.block, .person').forEach(function (el) {
       if (!el.classList.contains('reveal')) el.classList.add('reveal');
       io.observe(el);
+    });
+
+    /* 十六型：按列交错，从上往下依次滑落 */
+    cards.forEach(function (grid) {
+      var cols = 4;
+      try { cols = getComputedStyle(grid).gridTemplateColumns.split(' ').length || 4; } catch (e) {}
+      Array.prototype.forEach.call(grid.children, function (el, i) {
+        el.style.setProperty('--i', i % cols);
+        el.classList.add('anim');
+        io.observe(el);
+      });
     });
   }
 
